@@ -1,0 +1,56 @@
+#Krew.io total profit trades
+#Def lists
+list_goods = ["rum", "coffee", "spice", "silk", "gem", "gems", "sugar", "banana", "bananas"]
+list_islands = ["Spain", "Guinea", "Cuba", "Jamaica", "Malaysia", "Labrador", "Brazil"]
+#Get input of goods
+good = input("Enter the good you want to calculate all lowercase: ")
+#validate goods
+while not(good in list_goods):
+    print("That is an invalid good. Maybe you mispelled it? The list of goods are ",list_goods,)
+    good = input("Enter the good you want to calculate all lowercase: ")
+#get input of cargo
+cargo = int(input("Enter the amount of cargo you want to calculate: "))
+#validate cargo
+while cargo < 0 or cargo > 12000:
+    print("That is an invalid amount of cargo. The possible cargo amounts are between 0 and 12000.")
+    cargo = int(input("Enter the amount of cargo you want to calculate: "))
+#Get input of island where you bought said good
+islandFrom = input("Enter what island you are buying the good at: ")
+#validate islandFrom
+while not(islandFrom in list_islands):
+    print("That is an invalid island. Maybe you mispelled it? The list of islands are",list_islands, sep = ', ')
+    islandFrom = input("Enter what island you are buying the good at: ")
+#Get input of island where you are selling said good
+islandTo = input("Enter what island you are selling the good at: ")
+#validate islandTo
+while not(islandTo in list_islands):
+    print("That is an invalid island. Maybe you mispelled it? The list of islands are ",list_islands, sep = ', ')
+    islandTo = input("Enter what island you are selling the good at: ")
+#validate that it's not the same island
+while islandFrom == islandTo:
+    print("Seriosly?")
+    islandTo = input("Enter what island you are selling the good at: ")
+#get input of price of good from islandFrom
+goodPriceFrom = int(input(f"What is the price of {good} at {islandFrom}? "))
+#validate
+while goodPriceFrom < 0:
+    print("We both know it's more than that.")
+    goodPriceFrom = int(input(f"What is the price of {good} at {islandFrom}? "))
+#get input of price of good from islandTo
+goodPriceTo = int(input(f"What is the price of {good} at {islandTo}? "))
+#validate
+while goodPriceTo < 0:
+    print("We both know it's more than that.")
+    goodPriceTo = int(input(f"What is the price of {good} at {islandTo}? "))
+#get input of cargo value for good
+cargoValue = int(input("What is the cargo amount of this good? "))
+#validate
+while cargoValue < 0:
+    print("We both know it's more than that.")
+    cargoValue = int(input("What is the cargo amount of this good? "))
+#calculate
+numGoods = cargo // cargoValue
+totalProfit = goodPriceTo * numGoods - goodPriceFrom * numGoods
+#output
+print("The gross profit on this trip should be ",format(totalProfit, ',.0f'), sep = "$", end = "."
+)
