@@ -1,0 +1,56 @@
+#Krew.io profit calculator
+#Define constants
+rumCargo = 8
+coffeeCargo = 4
+spiceCargo = 6
+silkCargo = 12
+gemCargo = 15
+sugarCargo = 10
+bananaCargo = 4
+#Define lists
+list_goods = ["rum", "coffee", "spice", "silk", "gem", "gems", "sugar", "banana", "bananas"]
+list_islands = ["Spain", "Guinea", "Cuba", "Jamaica", "Malaysia", "Labrador", "Brazil"]
+#define cost lists
+list_costs_rum = [50, 200, 65, 115, 170, 110, 150]
+list_costs_coffee = [125, 80, 70, 100, 60, 90, 35]
+list_costs_spice = [135, 100, 65, 95, 35, 180, 160]
+list_costs_silk = [105, 240, 180, 160, 90, 150, 295]
+list_cost_gem = [250, 105, 240, 355, 240, 125, 275]
+list_cost_sugar = [310, 200, 175, 105, 125, 210, 65]
+list_cost_banana = [80, 55, 105, 25, 90, 80, 65]
+#Get input of goods
+good = input("Enter the good you want to calculate all lowercase: ")
+#validate goods
+while not(good in list_goods):
+    print("That is an invalid good. Maybe you mispelled it? The list of goods are ",list_goods,)
+    good = input("Enter the good you want to calculate all lowercase: ")
+#get input of cargo
+cargo = int(input("Enter the amount of cargo you want to calculate: "))
+#validate cargo
+while cargo < 0 or cargo > 12000:
+    print("That is an invalid amount of cargo. The possible cargo amounts are between 0 and 12000.")
+    cargo = int(input("Enter the amount of cargo you want to calculate: "))
+#Get input of island where you bought said good
+islandFrom = input("Enter what island you are buying the good at: ")
+#validate islandFrom
+while not(islandFrom in list_islands):
+    print("That is an invalid island. Maybe you mispelled it? The list of islands are",list_islands, sep = ', ')
+    islandFrom = input("Enter what island you are buying the good at: ")
+#Get input of island where you are selling said good
+islandTo = input("Enter what island you are selling the good at: ")
+#validate islandTo
+while not(islandTo in list_islands):
+    print("That is an invalid island. Maybe you mispelled it? The list of islands are ",list_islands, sep = ', ')
+    islandTo = input("Enter what island you are selling the good at: ")
+#validate that it's not the same island
+while islandFrom == islandTo:
+    print("Seriosly?")
+    islandTo = input("Enter what island you are selling the good at: ")
+#if statemenets
+
+#calculate
+numGoods = cargo // cargoValue
+totalProfit = goodPriceTo * numGoods - goodPriceFrom * numGoods
+#output
+print("The gross profit on this trip should be ",format(totalProfit, ',.0f'), sep = "$", end = "."
+)
